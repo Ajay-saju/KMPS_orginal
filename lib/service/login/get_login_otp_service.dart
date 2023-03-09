@@ -18,7 +18,8 @@ class GetLoginService {
       );
       print(response.data.toString());
       return response;
-    } on DioError catch (e) {
+    } 
+    on DioError catch (e) {
       print(e.message);
       rethrow;
     } catch (e) {

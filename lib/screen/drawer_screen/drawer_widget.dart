@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:kmps/utils/reusable_text.dart';
-
+import '../../controller/side_drawer/side_drawer_controller.dart';
 import '../../custom_widgets/drawer/browse_subject_drawer.dart';
 import '../../utils/colors.dart';
 
@@ -13,10 +14,14 @@ class DrawerWidgets extends StatefulWidget {
 }
 
 class _DrawerWidgetsState extends State<DrawerWidgets> {
+  final drawerController = Get.find<SideDrawerController>();
+
   bool sync = false;
   String x = '';
   @override
   Widget build(BuildContext context) {
+    final data = drawerController.mccDetailsModel.value.mccDetail;
+    final date = drawerController.changeData(data!.expiryDate);
     return SafeArea(
       child: Drawer(
         child: SingleChildScrollView(
@@ -40,8 +45,8 @@ class _DrawerWidgetsState extends State<DrawerWidgets> {
                             backgroundColor: Colors.red,
                           ),
                           Padding(
-                              padding:
-                                  const EdgeInsets.only(bottom: 50.0, right: 20),
+                              padding: const EdgeInsets.only(
+                                  bottom: 50.0, right: 20),
                               child: InkWell(
                                 onTap: () {
                                   Navigator.pop(context);
@@ -55,27 +60,49 @@ class _DrawerWidgetsState extends State<DrawerWidgets> {
                       const SizedBox(
                         height: 5,
                       ),
-                      const ReusableText.reusableText(
-                          title: 'DISHA JOSHI',
-                          size: 25,
-                          weight: FontWeight.bold,
-                          color: Color(0xffffe600)),
+                      Text(
+                        data.name == null ? "" : data.name.toString(),
+                        style:const TextStyle(
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold,
+                            color: Color(0xffffe600)),
+                      ),
+                      // const ReusableText.reusableText(
+                      //     title: 'DISHA JOSHI',
+                      //     size: 25,
+                      //     weight: FontWeight.bold,
+                      //     color: Color(0xffffe600)),
                       const SizedBox(
                         height: 5,
                       ),
-                      const ReusableText.reusableText(
-                        title: '(155831)',
-                        size: 18,
-                        color: Color(0xffffe600),
-                      ),
+
+                      Text(
+                        data.mccCode == null ? "" : data.mccCode.toString(),
+                        style:const TextStyle(
+                            fontSize: 8,
+                            
+                            color: Color(0xffffe600)),),
+                      // const ReusableText.reusableText(
+                      //   title: '(155831)',
+                      //   size: 18,
+                      //   color: Color(0xffffe600),
+                      // ),
                       const SizedBox(
                         height: 8,
                       ),
-                      const ReusableText.reusableText(
-                        title: 'KRISHNA DAIRY JUNAGADM',
-                        size: 15,
-                        color: whiteColor,
-                      )
+                       Text(
+                        data.mainClient == null ? "" : data.mainClient.toString(),
+                        style:const TextStyle(
+                            fontSize: 15,
+                            
+                            color:whiteColor),),
+
+
+                      // const ReusableText.reusableText(
+                      //   title: 'KRISHNA DAIRY JUNAGADM',
+                      //   size: 15,
+                      //   color: whiteColor,
+                      // )
                     ],
                   ),
                 ),
@@ -86,8 +113,8 @@ class _DrawerWidgetsState extends State<DrawerWidgets> {
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(top: 10, left: 20),
-                    child: const ReusableText.reusableText(
-                      title: 'LC. EXPIRE ON:   21/12/2023',
+                    child:  ReusableText.reusableText(
+                      title: 'LC. EXPIRE ON: $date',
                       weight: FontWeight.w500,
                     ),
                   ),
@@ -99,7 +126,8 @@ class _DrawerWidgetsState extends State<DrawerWidgets> {
                       width: 130,
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                            backgroundColor: sync ? Colors.green : buttonColors1),
+                            backgroundColor:
+                                sync ? Colors.green : buttonColors1),
                         onPressed: () {
                           setState(() {
                             sync = !sync;

@@ -69,7 +69,7 @@ class LoginController extends GetxController {
         if (verifyOtpModel.value.token != null) {
           DialogHelper.hideLoading();
           await Get.off(const HomeScreen());
-        }
+        } 
       }
     } catch (e) {
       print(e.toString());
