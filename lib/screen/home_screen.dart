@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:kmps/controller/side_drawer/side_drawer_controller.dart';
+import 'package:kmps/main.dart';
 import 'fragment/collection/collection_fregments.dart';
 import 'fragment/dashboard/dashboard_fragment.dart';
 import 'fragment/dispatch/dispatch_fragment.dart';
@@ -25,6 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
   int _selectedItem = 0;
   @override
   Widget build(BuildContext context) {
+    // print (sessionlog.getString('token'));
     return Scaffold(
         body: _pageItem[_selectedItem],
         bottomNavigationBar: BottomNavigationBar(

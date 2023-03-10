@@ -5,43 +5,62 @@ import 'package:kmps/utils/colors.dart';
 import 'package:kmps/utils/reusable_text.dart';
 
 class BrowseSubject extends StatelessWidget {
-   BrowseSubject({Key? key}) : super(key: key);
+  final String pouredmembers;
+  final String pendingMenbers;
+  final String totalQuantity;
+  final String samples;
+  final String avgFat;
+  final String avgSnf;
+   BrowseSubject({super.key,required this.pouredmembers,required this.pendingMenbers,required this.totalQuantity,required this.samples,required this.avgFat,required this.avgSnf});
 
   final List<BrowseModel> Cow = [
     BrowseModel(
         image: 'images/MemberDasb.svg',
         title: 'Poured Member',
-        number: '19',
+        number: '',
         color: const Color(0xffC0F1FD)),
     BrowseModel(
         image: 'images/MemberDasb.svg',
         title: 'Pending Member',
-        number: '24',
+        number: '',
         color: const Color(0xffFED4D6)),
     BrowseModel(
         image: 'images/QTY.png',
         title: 'Total Qty (Ltr)',
-        number: '30',
+        number: '',
         color: const Color(0xffE8DAFE)),
     BrowseModel(
         image: 'images/Group.svg',
         title: 'No of Sample',
-        number: '19',
+        number: '',
         color: const Color(0xffFEF5DA)),
     BrowseModel(
         image: 'images/FAT.png',
         title: 'Avgerage FAT',
-        number: '7.2',
+        number: '',
         color: const Color(0xffDBF5F0)),
     BrowseModel(
         image: 'images/snf.png',
         title: 'Avgerage SNF',
-        number: '8.5',
+        number: '',
         color: const Color(0xffD4E2FE)),
   ];
 
   @override
   Widget build(BuildContext context) {
+    
+    final numbers = [
+      pouredmembers,
+      pendingMenbers,
+      totalQuantity,
+      samples,
+      avgFat,
+      avgSnf,
+    ];
+     for (var i = 0; i < Cow.length; i++) {
+      Cow[i].number = numbers[i];
+    }
+    print(numbers.toString());
     return GridView.builder(
       itemCount: Cow.length,
       shrinkWrap: true,

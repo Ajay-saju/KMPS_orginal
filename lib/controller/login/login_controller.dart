@@ -36,6 +36,7 @@ class LoginController extends GetxController {
       }
       
     } catch (e) {
+      DialogHelper.hideLoading();
       Get.defaultDialog(
 
             title: "ERROR", middleText: 'Invalid phone number or password');
@@ -75,12 +76,13 @@ class LoginController extends GetxController {
       print(e.toString());
     }
   }
+  
 //  String findExpireDate(String date){
-
 //     String isoString = date;
 //   DateTime dateTime = DateTime.parse(isoString);
 //   String formattedDate = DateFormat('d/M/yyyy').format(dateTime);
 //   return formattedDate;
-
 //   }
+
+
 }
