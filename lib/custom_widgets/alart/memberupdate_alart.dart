@@ -3,8 +3,9 @@ import 'package:kmps/utils/colors.dart';
 import 'package:kmps/utils/reusable_text.dart';
 
 class MemberUpdateAlert extends StatefulWidget {
+  final String title;
   const MemberUpdateAlert({
-    Key? key,
+    Key? key, required this.title,
   }) : super(key: key);
 
   @override
@@ -28,7 +29,7 @@ class _MemberUpdateAlertState extends State<MemberUpdateAlert> {
                 padding: const EdgeInsets.only(top: 15),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
+                  children:  [
                     ReusableText.reusableText(
                       title: 'Member Information',
                       size: 20,
@@ -40,7 +41,7 @@ class _MemberUpdateAlertState extends State<MemberUpdateAlert> {
                       height: 5,
                     ),
                     ReusableText.reusableText(
-                      title: 'Updated!',
+                      title: widget.title,
                       size: 20,
                       color: Colors.black,
                       weight: FontWeight.bold,

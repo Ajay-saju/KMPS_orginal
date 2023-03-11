@@ -13,11 +13,11 @@ class  DashboardController extends GetxController {
       {required String milkType, required String shift}) async {
     DashDetailsService dashDetailsService = DashDetailsService();
 
-    final mcc_id = sessionlog.getString('mcc_code');
+    final mccId = sessionlog.getString('mcc_code');
     final data = {
       'milk_type': milkType,
       'shift': shift,
-      'mcc_id': mcc_id,
+      'mcc_id': mccId,
     };
     String jsonData = json.encode(data);
     try {
@@ -25,8 +25,8 @@ class  DashboardController extends GetxController {
       if (response.statusCode == 200) {
         dasboardDetailsModel.value =
             DashbordDetailsModel.fromJson(response.data);
+            print(dasboardDetailsModel.value.noSample.toString());
             isLoading.value = false;
-
       }
     } catch (e) {
       print(e.toString());

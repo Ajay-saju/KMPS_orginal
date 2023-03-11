@@ -23,6 +23,7 @@ class ReusableText extends StatelessWidget {
   Widget build(BuildContext context) {
     return FittedBox(
       child: Text(
+        title == null ? "":
         title!,
         textAlign: textAlign,
         style: TextStyle(

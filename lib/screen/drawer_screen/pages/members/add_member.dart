@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
+import 'package:kmps/controller/member/add_member_controller.dart';
 import 'package:kmps/utils/colors.dart';
 import 'package:kmps/utils/reusable_text.dart';
 
@@ -15,6 +17,7 @@ class AddMember extends StatefulWidget {
 }
 
 class _AddMemberState extends State<AddMember> {
+  final addMemberController = Get.put(AddMemberController());
   String dropDownValue = 'Male';
   var items = [
     'Male',
@@ -64,7 +67,8 @@ class _AddMemberState extends State<AddMember> {
                         height: MediaQuery.of(context).size.height * 0.045,
                         width: 150,
                         color: Colors.white,
-                        child: const TextField(
+                        child: TextField(
+                          controller: addMemberController.memberCodeController,
                           textAlign: TextAlign.start,
                           decoration: InputDecoration(
                               isDense: true,
@@ -109,7 +113,9 @@ class _AddMemberState extends State<AddMember> {
                                       0.045,
                                   width: 150,
                                   color: Colors.white,
-                                  child: const TextField(
+                                  child: TextField(
+                                    controller: addMemberController
+                                        .regionalNameController,
                                     textAlign: TextAlign.start,
                                     decoration: InputDecoration(
                                         isDense: true,
@@ -121,7 +127,9 @@ class _AddMemberState extends State<AddMember> {
                               ],
                             ),
                           ),
-                          SizedBox(width: 20,),
+                          SizedBox(
+                            width: 20,
+                          ),
                           Expanded(
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -143,7 +151,9 @@ class _AddMemberState extends State<AddMember> {
                                       0.045,
                                   width: 150,
                                   color: Colors.white,
-                                  child: const TextField(
+                                  child: TextField(
+                                    controller: addMemberController
+                                        .memberNameController,
                                     textAlign: TextAlign.start,
                                     decoration: InputDecoration(
                                         isDense: true,
@@ -174,7 +184,8 @@ class _AddMemberState extends State<AddMember> {
                         height: 40,
                         width: double.infinity,
                         color: Colors.white,
-                        child: const TextField(
+                        child: TextField(
+                          controller: addMemberController.emailController,
                           textAlign: TextAlign.start,
                           textAlignVertical: TextAlignVertical.center,
                           decoration: InputDecoration(
@@ -201,7 +212,8 @@ class _AddMemberState extends State<AddMember> {
                         height: 40,
                         width: double.infinity,
                         color: Colors.white,
-                        child: const TextField(
+                        child: TextField(
+                          controller: addMemberController.addressController,
                           textAlignVertical: TextAlignVertical.center,
                           decoration: InputDecoration(
                               isDense: true,
@@ -235,11 +247,13 @@ class _AddMemberState extends State<AddMember> {
                                   height: 40,
                                   width: 150,
                                   color: Colors.white,
-                                  child: const TextField(
+                                  child: TextField(
+                                    controller:
+                                        addMemberController.mobileNoController,
                                     decoration: InputDecoration(
                                         isDense: true,
-                                        contentPadding: EdgeInsets.only(
-                                            left: 15, top: 10),
+                                        contentPadding:
+                                            EdgeInsets.only(left: 15, top: 10),
                                         border: InputBorder.none,
                                         hintStyle: TextStyle(fontSize: 15)),
                                   ),
@@ -247,7 +261,9 @@ class _AddMemberState extends State<AddMember> {
                               ],
                             ),
                           ),
-                          SizedBox(width: 20,),
+                          SizedBox(
+                            width: 20,
+                          ),
                           Expanded(
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -274,8 +290,8 @@ class _AddMemberState extends State<AddMember> {
                                       isExpanded: true,
                                       value: dropDownValue,
                                       alignment: Alignment.center,
-                                      icon: const Icon(
-                                          Icons.keyboard_arrow_down),
+                                      icon:
+                                          const Icon(Icons.keyboard_arrow_down),
                                       items: items.map((String items) {
                                         return DropdownMenuItem(
                                           value: items,
@@ -321,19 +337,18 @@ class _AddMemberState extends State<AddMember> {
                                   color: buttonColors1,
                                   size: 14,
                                 ),
-                                SizedBox(
-                                  height: 10
-                                ),
+                                SizedBox(height: 10),
                                 Container(
                                   height: 40,
                                   color: Colors.white,
-                                  child: const TextField(
-                                    textAlignVertical:
-                                        TextAlignVertical.center,
+                                  child: TextField(
+                                    controller:
+                                        addMemberController.bankNameController,
+                                    textAlignVertical: TextAlignVertical.center,
                                     decoration: InputDecoration(
                                         isDense: true,
-                                        contentPadding: EdgeInsets.only(
-                                            left: 15, top: 10),
+                                        contentPadding:
+                                            EdgeInsets.only(left: 15, top: 10),
                                         border: InputBorder.none,
                                         hintStyle: TextStyle(fontSize: 15)),
                                   ),
@@ -341,7 +356,9 @@ class _AddMemberState extends State<AddMember> {
                               ],
                             ),
                           ),
-                          SizedBox(width: 20,),
+                          SizedBox(
+                            width: 20,
+                          ),
                           Expanded(
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -352,19 +369,18 @@ class _AddMemberState extends State<AddMember> {
                                   color: buttonColors1,
                                   size: 14,
                                 ),
-                                SizedBox(
-                                  height: 10
-                                ),
+                                SizedBox(height: 10),
                                 Container(
                                   height: 40,
                                   color: Colors.white,
-                                  child: const TextField(
-                                    textAlignVertical:
-                                        TextAlignVertical.center,
+                                  child: TextField(
+                                    controller: addMemberController
+                                        .branchNameController,
+                                    textAlignVertical: TextAlignVertical.center,
                                     decoration: InputDecoration(
                                         isDense: true,
-                                        contentPadding: EdgeInsets.only(
-                                            left: 15, top: 10),
+                                        contentPadding:
+                                            EdgeInsets.only(left: 15, top: 10),
                                         border: InputBorder.none,
                                         hintStyle: TextStyle(fontSize: 15)),
                                   ),
@@ -390,7 +406,8 @@ class _AddMemberState extends State<AddMember> {
                         height: 40,
                         width: double.infinity,
                         color: Colors.white,
-                        child: const TextField(
+                        child: TextField(
+                          controller: addMemberController.bankAccountController,
                           textAlignVertical: TextAlignVertical.center,
                           decoration: InputDecoration(
                               isDense: true,
@@ -416,7 +433,8 @@ class _AddMemberState extends State<AddMember> {
                         height: 40,
                         width: double.infinity,
                         color: Colors.white,
-                        child: const TextField(
+                        child: TextField(
+                          controller: addMemberController.ifscConroller,
                           textAlignVertical: TextAlignVertical.center,
                           decoration: InputDecoration(
                               isDense: true,
@@ -430,10 +448,39 @@ class _AddMemberState extends State<AddMember> {
                         height: MediaQuery.of(context).size.height * 0.025,
                       ),
                       InkWell(
-                        onTap: () => showDialog(
-                            context: context,
-                            builder: (BuildContext context) =>
-                                const MemberUpdateAlert()),
+                        onTap: () async {
+                          await addMemberController.addNewMember(
+                              accountNumber: addMemberController
+                                  .bankAccountController.text,
+                              address:
+                                  addMemberController.addressController.text,
+                              email: addMemberController.emailController.text,
+                              ifscCOde: addMemberController.ifscConroller.text,
+                              memberCode:
+                                  addMemberController.memberCodeController.text,
+                              memberName:
+                                  addMemberController.memberNameController.text,
+                              bankName:
+                                  addMemberController.bankNameController.text,
+                              branchName:
+                                  addMemberController.branchNameController.text,
+                              regionalName: addMemberController
+                                  .regionalNameController.text,
+                              gender: dropDownValue,
+                              phoneNumber: int.parse(
+                                  addMemberController.mobileNoController.text));
+                          print(addMemberController.mobileNoController.text);
+
+                          print('nv jhhj');
+                          addMemberController.sucess.value == true
+                              ? showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) =>
+                                      MemberUpdateAlert(
+                                        title: 'Saved!',
+                                      ))
+                              : "";
+                        },
                         child: Container(
                           height: MediaQuery.of(context).size.height * 0.064,
                           width: double.infinity,
@@ -475,8 +522,9 @@ class _AddMemberState extends State<AddMember> {
                         height: MediaQuery.of(context).size.height * 0.05,
                         width: MediaQuery.of(context).size.width * 0.25,
                         color: whiteColor,
-                        child: const TextField(
-                          decoration: InputDecoration(
+                        child: TextField(
+                          controller: addMemberController.limitController,
+                          decoration: const InputDecoration(
                               isDense: true,
                               contentPadding:
                                   EdgeInsets.only(left: 15, top: 10),
@@ -487,10 +535,16 @@ class _AddMemberState extends State<AddMember> {
                         height: MediaQuery.of(context).size.height * 0.03,
                       ),
                       InkWell(
-                        onTap: () => showDialog(
-                            context: context,
-                            builder: (BuildContext context) =>
-                                const LimitUpdateAlert()),
+                        onTap: () async {
+                          await addMemberController.setLimit(
+                              limit: addMemberController.limitController.text,
+                              memberId: '');
+
+                           showDialog(
+                              context: context,
+                              builder: (BuildContext context) =>
+                                  const LimitUpdateAlert());
+                        },
                         child: Container(
                           height: MediaQuery.of(context).size.height * 0.054,
                           width: double.infinity,

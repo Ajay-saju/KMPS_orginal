@@ -27,8 +27,8 @@ class _DashboardFragmentState extends State<DashboardFragment> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    drawerController.getMccDetails();
     dashboardController.getdashboardDetaails(milkType: "Cow", shift: 'Morning');
+    drawerController.getMccDetails();
   }
 
   bool cow = true;
@@ -37,9 +37,9 @@ class _DashboardFragmentState extends State<DashboardFragment> {
   bool e = false;
   @override
   Widget build(BuildContext context) {
-    final data = dashboardController.dasboardDetailsModel.value;
-    final totalMembers =
-        dashboardController.dasboardDetailsModel.value.totalMember;
+    // final data = dashboardController.dasboardDetailsModel.value;
+    // print(data.averageSnf. toString());
+
     return Scaffold(
         // resizeToAvoidBottomInset: false,
         backgroundColor: Colors.white,
@@ -60,8 +60,11 @@ class _DashboardFragmentState extends State<DashboardFragment> {
         ),
         drawer: const DrawerWidgets(),
         body: Obx(() {
-          return dashboardController.isLoading == true &&
-                  drawerController.isLoading == true
+          final totalMembers =
+              dashboardController.dasboardDetailsModel.value.totalMember;
+          return dashboardController.isLoading.value == true
+              //  &&
+              //         drawerController.isLoading.value == true
               ? const Center(
                   child: CircularProgressIndicator(
                     color: Colors.blue,
@@ -261,12 +264,24 @@ class _DashboardFragmentState extends State<DashboardFragment> {
                               padding: const EdgeInsets.symmetric(
                                   vertical: 8, horizontal: 10),
                               child: BrowseSubject(
-                                avgFat: data.averageFat.toString(),
-                                avgSnf: data.averageSnf.toString(),
-                                samples: data.noSample.toString(),
-                                totalQuantity: data.totalQty.toString(),
-                                pouredmembers: data.totalPoured.toString(),
-                                pendingMenbers: data.pendingMembers.toString(),
+                                avgFat: dashboardController
+                                    .dasboardDetailsModel.value.averageFat
+                                    .toString(),
+                                avgSnf: dashboardController
+                                    .dasboardDetailsModel.value.averageSnf
+                                    .toString(),
+                                samples: dashboardController
+                                    .dasboardDetailsModel.value.noSample
+                                    .toString(),
+                                totalQuantity: dashboardController
+                                    .dasboardDetailsModel.value.totalQty
+                                    .toString(),
+                                pouredmembers: dashboardController
+                                    .dasboardDetailsModel.value.totalPoured
+                                    .toString(),
+                                pendingMenbers: dashboardController
+                                    .dasboardDetailsModel.value.pendingMembers
+                                    .toString(),
                               ),
                             ),
                           )
@@ -274,7 +289,26 @@ class _DashboardFragmentState extends State<DashboardFragment> {
                             child: Padding(
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 10, vertical: 8),
-                              child: BrowseSubjectBuffalo(),
+                              child: BrowseSubjectBuffalo(
+                                avgFat: dashboardController
+                                    .dasboardDetailsModel.value.averageFat
+                                    .toString(),
+                                avgSnf: dashboardController
+                                    .dasboardDetailsModel.value.averageSnf
+                                    .toString(),
+                                samples: dashboardController
+                                    .dasboardDetailsModel.value.noSample
+                                    .toString(),
+                                totalQuantity: dashboardController
+                                    .dasboardDetailsModel.value.totalQty
+                                    .toString(),
+                                pouredmembers: dashboardController
+                                    .dasboardDetailsModel.value.totalPoured
+                                    .toString(),
+                                pendingMenbers: dashboardController
+                                    .dasboardDetailsModel.value.pendingMembers
+                                    .toString(),
+                              ),
                             ),
                           ),
                   ],

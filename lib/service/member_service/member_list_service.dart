@@ -2,17 +2,16 @@ import 'package:dio/dio.dart';
 import 'package:kmps/main.dart';
 import 'package:kmps/service/base_api/orginal_api.dart';
 
-class MccDetailService {
+class MemberListServce {
   static OrginalApi orginalApi = OrginalApi();
   final dio = Dio(BaseOptions(
       baseUrl: orginalApi.base_url, responseType: ResponseType.json));
-
-  Future<Response> getMccDetalsService() async {
+  Future<Response> getMemberList(searchItem) async {
     final token = sessionlog.getString('token');
-    print(token.toString());
     try {
       Response response = await dio.post(
-        'api/mcc_detail',
+        'api/member',
+        data: searchItem,
         options: Options(
           headers: {
             'Content-Type': 'application/json',

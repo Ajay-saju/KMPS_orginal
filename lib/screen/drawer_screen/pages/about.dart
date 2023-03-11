@@ -115,11 +115,11 @@ class _AboutState extends State<About> {
                         ),
                       ),
                     ),
-                    SizedBox(width: 10,),
+                    const SizedBox(width: 10,),
                     const ReusableText.reusableText(
                       title: 'To',
                     ),
-                    SizedBox(width: 10,),
+                    const SizedBox(width: 10,),
                     InkWell(
                       onTap: () {
                         showDateTo();
@@ -148,7 +148,7 @@ class _AboutState extends State<About> {
                   ],
                 ),
               ),
-              SizedBox(height: 10,),
+              const SizedBox(height: 10,),
               Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: Row(
@@ -204,7 +204,7 @@ class _AboutState extends State<About> {
                     Expanded(
                       child: Container(
                           height: MediaQuery.of(context).size.height * 0.08,
-                          padding: EdgeInsets.symmetric(horizontal: 10),
+                          padding: const EdgeInsets.symmetric(horizontal: 10),
                           decoration: BoxDecoration(
                               color: whiteColor,
                               border: Border.all(color: buttonColors1)),
@@ -236,7 +236,7 @@ class _AboutState extends State<About> {
               ),
               Container(
                 width: double.infinity,
-                padding: EdgeInsets.all(10),
+                padding: const EdgeInsets.all(10),
                 color: const Color(0xffD4E2FE),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -246,7 +246,7 @@ class _AboutState extends State<About> {
                   children: [
                     Expanded(
                       child: Container(
-                        padding: EdgeInsets.all(10),
+                        padding: const EdgeInsets.all(10),
                         decoration: BoxDecoration(
                             color: whiteColor,
                             border:
@@ -289,7 +289,7 @@ class _AboutState extends State<About> {
                     ),
                     Expanded(
                       child: Container(
-                        padding: EdgeInsets.all(8),
+                        padding: const EdgeInsets.all(8),
                         decoration: BoxDecoration(
                             color: whiteColor,
                             border:
@@ -349,7 +349,7 @@ class _AboutState extends State<About> {
                       ),
                     ),
 
-                    SizedBox(height: 10,),
+                    const SizedBox(height: 10,),
                   ],
                 ),
               ),

@@ -11,7 +11,14 @@ class BrowseSubject extends StatelessWidget {
   final String samples;
   final String avgFat;
   final String avgSnf;
-   BrowseSubject({super.key,required this.pouredmembers,required this.pendingMenbers,required this.totalQuantity,required this.samples,required this.avgFat,required this.avgSnf});
+  BrowseSubject(
+      {super.key,
+      required this.pouredmembers,
+      required this.pendingMenbers,
+      required this.totalQuantity,
+      required this.samples,
+      required this.avgFat,
+      required this.avgSnf});
 
   final List<BrowseModel> Cow = [
     BrowseModel(
@@ -48,7 +55,8 @@ class BrowseSubject extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
+    print(pouredmembers.toString());
+
     final numbers = [
       pouredmembers,
       pendingMenbers,
@@ -57,10 +65,10 @@ class BrowseSubject extends StatelessWidget {
       avgFat,
       avgSnf,
     ];
-     for (var i = 0; i < Cow.length; i++) {
+    for (var i = 0; i < Cow.length; i++) {
       Cow[i].number = numbers[i];
     }
-    print(numbers.toString());
+    // print(numbers.toString());
     return GridView.builder(
       itemCount: Cow.length,
       shrinkWrap: true,
@@ -71,7 +79,7 @@ class BrowseSubject extends StatelessWidget {
           childAspectRatio: 1),
       itemBuilder: (_, index) {
         return Container(
-            padding: EdgeInsets.all(10),
+            padding: const EdgeInsets.all(10),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
               color: Cow[index].color,
@@ -85,7 +93,7 @@ class BrowseSubject extends StatelessWidget {
                   children: [
                     Expanded(
                       child: Container(
-                        padding: EdgeInsets.all(10),
+                        padding: const EdgeInsets.all(10),
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
                             color: whiteColor,
@@ -99,10 +107,10 @@ class BrowseSubject extends StatelessWidget {
                             ]),
                         child: Center(
                             child: ReusableText.reusableText(
-                              title: Cow[index].number,
-                              size: 28,
-                              weight: FontWeight.bold,
-                            )),
+                          title: Cow[index].number,
+                          size: 28,
+                          weight: FontWeight.bold,
+                        )),
                       ),
                     ),
                     const SizedBox(
