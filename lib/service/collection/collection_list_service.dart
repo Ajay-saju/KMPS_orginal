@@ -1,30 +1,31 @@
-import 'dart:io';
 
 import 'package:dio/dio.dart';
+import 'package:kmps/main.dart';
 import 'package:kmps/service/base_api/orginal_api.dart';
 
-class GetLoginService {
+class CollectionListService {
   static OrginalApi orginalApi = OrginalApi();
   final dio = Dio(BaseOptions(
       baseUrl: orginalApi.base_url, responseType: ResponseType.json));
-
-  Future<Response> getLoginOtp(data) async {
-    // dio.options.validateStatus= (status) => true;
-
+  Future<Response> getCollectionList(data) async {
+    print(data.toString());
+    final token = sessionlog.getString('token');
     try {
       Response response = await dio.post(
-        'api/generate_otp',
-        data: data,
+        'api/list_collection_search',data:data ,
         options: Options(
-          headers: {'Content-Type': 'application/json'},
+          headers: {
+            'Content-Type': 'application/json',
+            "Authorization": "Bearer $token",
+          },
         ),
       );
-      print(response.data.toString());
       return response;
     } on DioError catch (e) {
       print(e.message);
       rethrow;
     } catch (e) {
+      print(e.toString());
       rethrow;
     }
   }
