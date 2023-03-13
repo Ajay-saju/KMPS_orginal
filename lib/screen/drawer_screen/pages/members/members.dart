@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:kmps/controller/member/member_controller.dart';
 import 'package:kmps/screen/drawer_screen/drawer_widget.dart';
 import 'package:kmps/screen/drawer_screen/pages/members/add_member.dart';
+import 'package:kmps/screen/drawer_screen/pages/members/edit_member_scrreen.dart';
 import 'package:kmps/utils/colors.dart';
 import 'package:kmps/utils/reusable_text.dart';
 
@@ -22,9 +23,23 @@ class _MembersState extends State<Members> {
     super.initState();
     memberConlroller.getMemberList('');
   }
+//   TextEditingController _searchController = TextEditingController();
+//   _searchController.addListener(() {
+//   if (_searchController.text.isEmpty) {
+//     // If the search text is empty, update the listview with all values
+//     updateListViewWithAllValues();
+//   }
+// });
+
+  
 
   @override
   Widget build(BuildContext context) {
+    memberConlroller.searchController.addListener((){
+      if( memberConlroller.searchController.text.isEmpty){
+        memberConlroller.getMemberList('');
+      }
+    });
     return Scaffold(
       appBar: AppBar(
         titleSpacing: 0,
@@ -64,10 +79,11 @@ class _MembersState extends State<Members> {
                           border: Border.all(color: buttonColors1, width: 0.5)),
                       child: TextField(
                         controller: memberConlroller.searchController,
-                        onChanged: (value) {
+                        onSubmitted: (value) {
                           print(value.toString);
                           memberConlroller.getMemberList(value);
                         },
+                       
                         decoration: const InputDecoration(
                             isDense: true,
                             contentPadding: EdgeInsets.only(left: 10, top: 10),
@@ -86,7 +102,7 @@ class _MembersState extends State<Members> {
                   ),
                   Expanded(
                     // height: 500,
-                    child: memberConlroller.memberListModel.value.member == null
+                    child: memberConlroller.memberListModel.value.member!.isEmpty
                         ? const Center(
                             child: Text('No data Available'),
                           )
@@ -123,37 +139,66 @@ class _MembersState extends State<Members> {
                                               const SizedBox(
                                                 height: 5,
                                               ),
-                                              ReusableText.reusableText(
-                                                title: memberConlroller
+                                              Text(
+                                                memberConlroller
                                                         .memberListModel
                                                         .value
                                                         .member![index]
                                                         .address ??
                                                     "",
-                                                size: 16,
+                                                style: const TextStyle(
+                                                  fontSize: 16,
+                                                ),
                                               ),
+                                              // ReusableText.reusableText(
+                                              //   title: memberConlroller
+                                              //           .memberListModel
+                                              //           .value
+                                              //           .member![index]
+                                              //           .address ??
+                                              //       "",
+                                              //   size: 16,
+                                              // ),
                                               const SizedBox(
                                                 height: 5,
                                               ),
-                                              ReusableText.reusableText(
-                                                title: memberConlroller
+                                              Text(
+                                                memberConlroller
                                                         .memberListModel
                                                         .value
                                                         .member![index]
                                                         .memberPhone ??
                                                     "",
                                               ),
+                                              // ReusableText.reusableText(
+                                              //   title: memberConlroller
+                                              //           .memberListModel
+                                              //           .value
+                                              //           .member![index]
+                                              //           .memberPhone ??
+                                              //       "",
+                                              // ),
                                               const SizedBox(
                                                 height: 5,
                                               ),
-                                              ReusableText.reusableText(
-                                                title: memberConlroller
+
+                                              Text(
+                                                memberConlroller
                                                         .memberListModel
                                                         .value
                                                         .member![index]
                                                         .birthDate ??
                                                     "",
-                                              )
+                                              ),
+
+                                              // ReusableText.reusableText(
+                                              //   title: memberConlroller
+                                              //           .memberListModel
+                                              //           .value
+                                              //           .member![index]
+                                              //           .birthDate ??
+                                              //       "",
+                                              // )
                                             ],
                                           ),
                                           Padding(
@@ -190,7 +235,11 @@ class _MembersState extends State<Members> {
                                                 Row(
                                                   children: [
                                                     InkWell(
-                                                      onTap: () {},
+                                                      onTap: () {
+                                                        Get.to(EditMemberScreen(
+                                                          index: index,
+                                                        ));
+                                                      },
                                                       child: SvgPicture.asset(
                                                         'images/edit.svg',
                                                       ),

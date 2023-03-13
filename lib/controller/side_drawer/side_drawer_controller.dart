@@ -16,10 +16,12 @@ class SideDrawerController extends GetxController {
       var response = await mccDetailService.getMccDetalsService();
       if (response.statusCode == 200) {
         mccDetailsModel.value = MccDetailsModel.fromJson(response.data);
-        isLoading.value = false;
+        
         sessionlog.setString(
             'mcc_code', mccDetailsModel.value.mccDetail!.mccCode.toString());
-        print(mccDetailsModel.value.mccDetail!.expiryDate);
+        sessionlog.setString(
+           'mcc_name', mccDetailsModel.value.mccDetail!.name.toString());
+        isLoading.value = false;
       }
     } catch (e) {
       print(e.toString());

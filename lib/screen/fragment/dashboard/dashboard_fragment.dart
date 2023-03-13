@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:kmps/controller/dashboard/dashboard_controller.dart';
+import 'package:kmps/main.dart';
 import 'package:kmps/utils/colors.dart';
 
 import '../../../controller/side_drawer/side_drawer_controller.dart';
@@ -37,6 +38,7 @@ class _DashboardFragmentState extends State<DashboardFragment> {
   bool e = false;
   @override
   Widget build(BuildContext context) {
+    final mccName = sessionlog.getString('mcc_name');
     // final data = dashboardController.dasboardDetailsModel.value;
     // print(data.averageSnf. toString());
 
@@ -80,12 +82,10 @@ class _DashboardFragmentState extends State<DashboardFragment> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          const Expanded(
-                            child: ReusableText.reusableText(
-                              title: 'MANAN DESAI JNG [123]',
-                              weight: FontWeight.bold,
-                              size: 17,
-                            ),
+                          ReusableText.reusableText(
+                            title: mccName,
+                            weight: FontWeight.bold,
+                            size: 17,
                           ),
                           const SizedBox(
                             width: 10,

@@ -30,6 +30,7 @@ class MemberController extends GetxController {
 DeleteMember deleteMember =DeleteMember();
   Future deleteUser(memberId) async {
     DialogHelper.showLoading();
+    
     // isLoading.value=true;
     
     final data = {'member_id': memberId};
@@ -39,6 +40,7 @@ DeleteMember deleteMember =DeleteMember();
       if (response.statusCode == 200) {
         //  isLoading.value = false;
         DialogHelper.hideLoading();
+        getMemberList('');
       }else{
         print('item not found');
       }

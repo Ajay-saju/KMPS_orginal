@@ -30,8 +30,9 @@ class LoginController extends GetxController {
         getLoginOtpModel.value = GetLoginOtp.fromJson(response.data);
         print(getLoginOtpModel.value.otp.toString());
         if (getLoginOtpModel.value.otp != null) {
+          DialogHelper.hideLoading();
           Get.to(VerifyOtpScreen(
-            no: phone,
+            no: phoneController.text,
             password: password,
           ));
         }
@@ -50,7 +51,7 @@ class LoginController extends GetxController {
       required String phone,
       required String password}) async {
     VerifyOtpService verifyOtpService = VerifyOtpService();
-
+print(otp);
 
     final data = {
       'phone': phone,
@@ -73,14 +74,19 @@ class LoginController extends GetxController {
         if (verifyOtpModel.value.token != null) {
           DialogHelper.hideLoading();
           await Get.off(const HomeScreen());
-           DialogHelper.hideLoading();
+          
         }
-      }else{
+      }
+      else{
+         DialogHelper.hideLoading();
         Get.defaultDialog(
             title: 'Wrong OTP', middleText: 'You are enterd a wrong OTP');
       }
     } catch (e) {
       print(e.toString());
+       DialogHelper.hideLoading();
+        Get.defaultDialog(
+            title: 'Wrong OTP', middleText: 'You are enterd a wrong OTP');
     }
   }
 

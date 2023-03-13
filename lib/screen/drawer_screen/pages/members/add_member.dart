@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:kmps/controller/member/add_member_controller.dart';
 import 'package:kmps/utils/colors.dart';
 import 'package:kmps/utils/reusable_text.dart';
-
-import '../../../../custom_widgets/alart/limitupdat_alart.dart';
 import '../../../../custom_widgets/alart/memberupdate_alart.dart';
 import '../../drawer_widget.dart';
 
@@ -68,6 +67,8 @@ class _AddMemberState extends State<AddMember> {
                         width: 150,
                         color: Colors.white,
                         child: TextField(
+                          inputFormatters: [LengthLimitingTextInputFormatter(3)],
+                          keyboardType: TextInputType.phone,
                           controller: addMemberController.memberCodeController,
                           textAlign: TextAlign.start,
                           decoration: InputDecoration(
@@ -248,6 +249,8 @@ class _AddMemberState extends State<AddMember> {
                                   width: 150,
                                   color: Colors.white,
                                   child: TextField(
+                                    keyboardType: TextInputType.phone,
+                                    inputFormatters: [LengthLimitingTextInputFormatter(10)],
                                     controller:
                                         addMemberController.mobileNoController,
                                     decoration: InputDecoration(
@@ -467,11 +470,10 @@ class _AddMemberState extends State<AddMember> {
                               regionalName: addMemberController
                                   .regionalNameController.text,
                               gender: dropDownValue,
-                              phoneNumber: int.parse(
-                                  addMemberController.mobileNoController.text));
-                          print(addMemberController.mobileNoController.text);
+                              phoneNumber:addMemberController.mobileNoController.text);
+                          // print(addMemberController.mobileNoController.text);
 
-                          print('nv jhhj');
+                        
                           addMemberController.sucess.value == true
                               ? showDialog(
                                   context: context,
@@ -499,70 +501,70 @@ class _AddMemberState extends State<AddMember> {
                   ),
                 ),
               ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.03,
-              ),
-              Container(
-                width: double.infinity,
-                color: const Color(0xffD4E2FE),
-                child: Padding(
-                  padding: const EdgeInsets.all(20.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const ReusableText.reusableText(
-                        title: 'Limit',
-                        color: buttonColors1,
-                        weight: FontWeight.bold,
-                      ),
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.005,
-                      ),
-                      Container(
-                        height: MediaQuery.of(context).size.height * 0.05,
-                        width: MediaQuery.of(context).size.width * 0.25,
-                        color: whiteColor,
-                        child: TextField(
-                          controller: addMemberController.limitController,
-                          decoration: const InputDecoration(
-                              isDense: true,
-                              contentPadding:
-                                  EdgeInsets.only(left: 15, top: 10),
-                              border: InputBorder.none),
-                        ),
-                      ),
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.03,
-                      ),
-                      InkWell(
-                        onTap: () async {
-                          await addMemberController.setLimit(
-                              limit: addMemberController.limitController.text,
-                              memberId: '');
+              // SizedBox(
+              //   height: MediaQuery.of(context).size.height * 0.03,
+              // ),
+              // Container(
+              //   width: double.infinity,
+              //   color: const Color(0xffD4E2FE),
+              //   child: Padding(
+              //     padding: const EdgeInsets.all(20.0),
+              //     child: Column(
+              //       crossAxisAlignment: CrossAxisAlignment.start,
+              //       children: [
+              //         const ReusableText.reusableText(
+              //           title: 'Limit',
+              //           color: buttonColors1,
+              //           weight: FontWeight.bold,
+              //         ),
+              //         SizedBox(
+              //           height: MediaQuery.of(context).size.height * 0.005,
+              //         ),
+              //         Container(
+              //           height: MediaQuery.of(context).size.height * 0.05,
+              //           width: MediaQuery.of(context).size.width * 0.25,
+              //           color: whiteColor,
+              //           child: TextField(
+              //             controller: addMemberController.limitController,
+              //             decoration: const InputDecoration(
+              //                 isDense: true,
+              //                 contentPadding:
+              //                     EdgeInsets.only(left: 15, top: 10),
+              //                 border: InputBorder.none),
+              //           ),
+              //         ),
+              //         SizedBox(
+              //           height: MediaQuery.of(context).size.height * 0.03,
+              //         ),
+              //         InkWell(
+              //           onTap: () async {
+              //             await addMemberController.setLimit(
+              //                 limit: addMemberController.limitController.text,
+              //                 memberId: '');
 
-                           showDialog(
-                              context: context,
-                              builder: (BuildContext context) =>
-                                  const LimitUpdateAlert());
-                        },
-                        child: Container(
-                          height: MediaQuery.of(context).size.height * 0.054,
-                          width: double.infinity,
-                          color: buttonColors1,
-                          child: const Center(
-                            child: ReusableText.reusableText(
-                              title: 'Set Limit',
-                              size: 19,
-                              color: Colors.white,
-                              weight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-              )
+              //              showDialog(
+              //                 context: context,
+              //                 builder: (BuildContext context) =>
+              //                     const LimitUpdateAlert());
+              //           },
+              //           child: Container(
+              //             height: MediaQuery.of(context).size.height * 0.054,
+              //             width: double.infinity,
+              //             color: buttonColors1,
+              //             child: const Center(
+              //               child: ReusableText.reusableText(
+              //                 title: 'Set Limit',
+              //                 size: 19,
+              //                 color: Colors.white,
+              //                 weight: FontWeight.bold,
+              //               ),
+              //             ),
+              //           ),
+              //         )
+              //       ],
+              //     ),
+              //   ),
+              // )
             ],
           ),
         ));

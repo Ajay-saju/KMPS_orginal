@@ -3,8 +3,9 @@ import 'package:kmps/utils/colors.dart';
 import 'package:kmps/utils/reusable_text.dart';
 
 class LimitUpdateAlert extends StatefulWidget {
+  final String name ;
   const LimitUpdateAlert({
-    Key? key,
+    Key? key, required this.name,
   }) : super(key: key);
 
   @override
@@ -28,19 +29,19 @@ class _LimitUpdateAlertState extends State<LimitUpdateAlert> {
                 padding: const EdgeInsets.only(top: 15),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    ReusableText.reusableText(
+                  children:  [
+                 const   ReusableText.reusableText(
                       title: 'Limit for,',
                       size: 20,
                       color: Colors.black,
                       textAlign: TextAlign.center,
                       weight: FontWeight.bold,
                     ),
-                    SizedBox(
+                   const SizedBox(
                       height: 6,
                     ),
                     ReusableText.reusableText(
-                      title: 'Manan Desai',
+                      title: widget.name,
                       size: 20,
                       color: Colors.black,
                       weight: FontWeight.bold,

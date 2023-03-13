@@ -37,7 +37,7 @@ class _CollectionState extends State<Collection> {
     // TODO: implement initState
     super.initState();
     collectionListController.getCollectionList(
-        date: selectedDate.toString(), shift: 'Morning', searchWord: '');
+        date:" 09-03-2023", shift: 'Morning', searchWord: '');
   }
 
   bool male = true;

@@ -16,9 +16,11 @@ class VerifyOtpScreen extends StatefulWidget {
 }
 
 class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
+  
   final loginController = Get.find<LoginController>();
   @override
   Widget build(BuildContext context) {
+    final pNo=widget.no;
     return Scaffold(
       body: SafeArea(
           child: Center(
@@ -29,7 +31,7 @@ class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
               height: 20,
             ),
             const Text(
-              'Enter 4-digit OTP sent to',
+              'Enter 6-digit OTP sent to',
               style: TextStyle(
                   fontSize: 15, letterSpacing: 1, fontWeight: FontWeight.w600),
             ),
@@ -37,7 +39,7 @@ class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
               height: 10,
             ),
             Text(
-              "+91 $widget.no",
+              "+91 $pNo",
               style: const TextStyle(
                   fontSize: 15, letterSpacing: 1, fontWeight: FontWeight.w700),
             ),
