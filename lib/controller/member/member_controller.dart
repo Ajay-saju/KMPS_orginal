@@ -27,6 +27,7 @@ class MemberController extends GetxController {
     }
     update();
   }
+  
 DeleteMember deleteMember =DeleteMember();
   Future deleteUser(memberId) async {
     DialogHelper.showLoading();

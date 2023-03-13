@@ -1,13 +1,12 @@
-
 import 'package:dio/dio.dart';
 import 'package:kmps/main.dart';
 import 'package:kmps/service/base_api/orginal_api.dart';
 
-class CollectionListService {
+class AddCollectionSingle {
   static OrginalApi orginalApi = OrginalApi();
   final dio = Dio(BaseOptions(
       baseUrl: orginalApi.base_url, responseType: ResponseType.json));
-  Future<Response> getCollectionList(data) async {
+  Future<Response> addSingleCollection(data) async {
     print(data.toString());
     final token = sessionlog.getString('token');
     print(data);

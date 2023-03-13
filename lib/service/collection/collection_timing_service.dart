@@ -1,19 +1,20 @@
 
 import 'package:dio/dio.dart';
 import 'package:kmps/main.dart';
-import 'package:kmps/service/base_api/orginal_api.dart';
 
-class CollectionListService {
+import '../base_api/orginal_api.dart';
+
+class CollectionTimingService {
   static OrginalApi orginalApi = OrginalApi();
   final dio = Dio(BaseOptions(
       baseUrl: orginalApi.base_url, responseType: ResponseType.json));
-  Future<Response> getCollectionList(data) async {
-    print(data.toString());
+  Future<Response> getCollectionTimming() async {
+  
     final token = sessionlog.getString('token');
-    print(data);
+  
     try {
       Response response = await dio.post(
-        'api/list_collection_search',data:data ,
+        'api/collection_start_end',
         options: Options(
           headers: {
             'Content-Type': 'application/json',
@@ -31,3 +32,4 @@ class CollectionListService {
     }
   }
 }
+

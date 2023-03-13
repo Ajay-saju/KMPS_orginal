@@ -17,6 +17,24 @@ class AddMember extends StatefulWidget {
 
 class _AddMemberState extends State<AddMember> {
   final addMemberController = Get.put(AddMemberController());
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    addMemberController.memberCodeController.clear();
+    addMemberController.regionalNameController.clear();
+    addMemberController.memberNameController.clear();
+    addMemberController.emailController.clear();
+    addMemberController.addressController.clear();
+    addMemberController.mobileNoController.clear();
+    addMemberController.bankNameController.clear();
+    addMemberController.branchNameController.clear();
+    addMemberController.bankAccountController.clear();
+    addMemberController.ifscConroller.clear();
+    addMemberController.limitController.clear();
+  }
+
   String dropDownValue = 'Male';
   var items = [
     'Male',
@@ -67,7 +85,9 @@ class _AddMemberState extends State<AddMember> {
                         width: 150,
                         color: Colors.white,
                         child: TextField(
-                          inputFormatters: [LengthLimitingTextInputFormatter(3)],
+                          inputFormatters: [
+                            LengthLimitingTextInputFormatter(3)
+                          ],
                           keyboardType: TextInputType.phone,
                           controller: addMemberController.memberCodeController,
                           textAlign: TextAlign.start,
@@ -250,7 +270,9 @@ class _AddMemberState extends State<AddMember> {
                                   color: Colors.white,
                                   child: TextField(
                                     keyboardType: TextInputType.phone,
-                                    inputFormatters: [LengthLimitingTextInputFormatter(10)],
+                                    inputFormatters: [
+                                      LengthLimitingTextInputFormatter(10)
+                                    ],
                                     controller:
                                         addMemberController.mobileNoController,
                                     decoration: InputDecoration(
@@ -470,10 +492,10 @@ class _AddMemberState extends State<AddMember> {
                               regionalName: addMemberController
                                   .regionalNameController.text,
                               gender: dropDownValue,
-                              phoneNumber:addMemberController.mobileNoController.text);
+                              phoneNumber:
+                                  addMemberController.mobileNoController.text);
                           // print(addMemberController.mobileNoController.text);
 
-                        
                           addMemberController.sucess.value == true
                               ? showDialog(
                                   context: context,

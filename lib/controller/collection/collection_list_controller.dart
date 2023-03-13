@@ -20,6 +20,7 @@ class CollectionListController extends GetxController {
       if(response.statusCode ==200){
         collectionListModel.value = CollectionListModel.fromJson(response.data);
         isLoading.value=false;
+        print(collectionListModel.value.collection!.length);
       }
     } catch (e) {
       print(e.toString());

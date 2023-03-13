@@ -466,15 +466,15 @@ class _CollectionState extends State<Collection> {
                                         child: Column(
                                           mainAxisAlignment:
                                               MainAxisAlignment.center,
-                                          children: const [
-                                            ReusableText.reusableText(
+                                          children:  [
+                                          const  ReusableText.reusableText(
                                                 size: 17,
                                                 title: 'Total Amt.',
                                                 weight: FontWeight.bold,
                                                 color: Colors.black),
                                             ReusableText.reusableText(
                                                 size: 17,
-                                                title: 'Rs. 225',
+                                                title: collectionListController.collectionListModel.value.totalamount.toString(),
                                                 weight: FontWeight.bold,
                                                 color: Colors.black),
                                           ],
